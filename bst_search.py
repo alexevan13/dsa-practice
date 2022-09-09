@@ -132,6 +132,17 @@ def postorder_traverse_iterative(root):
             answer.append(elem.val)
 
 
+def element_exists_in_bst_recursive(root, elem):
+    if not root:
+        return False
+    print(root.val)
+    if root.val == elem:
+        return True
+    if elem < root.val:
+        return element_exists_in_bst_recursive(root.left, elem)
+    return element_exists_in_bst_recursive(root.right, elem)
+
+
 bst = create_bst()
 print("******* TREE *******")
 bst.display()
@@ -159,3 +170,7 @@ print("******* POSTORDER ITERATIVE *******")
 answer.clear()
 postorder_traverse_iterative(bst)
 print(answer)
+
+print("******* RECURSIVE SEARCH *******")
+elem = 2
+print(f"{elem} exists in given bst = {element_exists_in_bst_recursive(bst, elem)}")

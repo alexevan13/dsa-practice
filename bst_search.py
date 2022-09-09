@@ -98,6 +98,36 @@ def postorder_traverse_recursive(root):
     answer.append(root.val)
 
 
+def preorder_traverse_iterative(root):
+    stack = [root]
+    while len(stack) > 0:
+        elem = stack.pop()
+        if elem:
+            answer.append(elem.val)
+            stack.append(elem.right)
+            stack.append(elem.left)
+
+
+def inorder_traverse_iterative(root):
+    stack = [root]
+    while len(stack) > 0:
+        elem = stack.pop()
+        if elem:
+            stack.append(elem.right)
+            answer.append(elem.val)
+            stack.append(elem.left)
+
+
+def postorder_traverse_iterative(root):
+    stack = [root]
+    while len(stack) > 0:
+        elem = stack.pop()
+        if elem:
+            stack.append(elem.right)
+            stack.append(elem.left)
+            answer.append(elem.val)
+
+
 bst = create_bst()
 print("******* TREE *******")
 bst.display()
@@ -112,4 +142,16 @@ print(answer)
 print("******* POSTORDER RECURSIVE *******")
 answer.clear()
 postorder_traverse_recursive(bst)
+print(answer)
+print("******* PREORDER ITERATIVE *******")
+answer.clear()
+preorder_traverse_iterative(bst)
+print(answer)
+print("******* INORDER ITERATIVE *******")
+answer.clear()
+inorder_traverse_recursive(bst)
+print(answer)
+print("******* POSTORDER ITERATIVE *******")
+answer.clear()
+postorder_traverse_iterative(bst)
 print(answer)
